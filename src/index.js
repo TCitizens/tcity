@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import ReactModal from './react-component';
+import ReactModal from 'react-modal';
 import { ConnectedRouter } from 'react-router-redux';
 import { Provider } from 'react-redux';
 import {  configureStore, history } from './store/store';
