@@ -25,13 +25,13 @@ class CommentForm extends React.Component {
   render(){
     return (
       <div className='footer'>
-        <div className='footer_message'>
+        <div className='footer-comment'>
           <form onSubmit={this.handleSubmit}>
-            <label className="label-message">
+            <label className="label-comment">
               <input type="text"
                 placeholder={"Comment"}
                 value={this.state.body}
-                className="message-input"
+                className="comment-input"
                 onChange={this.update('body')}
               />
             </label>
