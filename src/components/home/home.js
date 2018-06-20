@@ -1,12 +1,16 @@
 import React from 'react';
 import ReactModal from 'react-modal';
+import modalStyle from '../shared/modalStyle';
 import { StyleSheet, css } from 'aphrodite';
 
 class Home extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      showModal: false
+      showModal: false,
+      submitted: false,
+      proposal: '',
+      description: ''
     }
   }
 
@@ -24,11 +28,48 @@ class Home extends React.Component {
     })
   }
 
+  handleSubmit = (e) => {
+
+  }
+
+  handleInput = (field) => {
+    return (e) => (
+      this.setState({
+        [field]: e.currentTarget.value
+      })
+    );
+  }
+
   renderModalContent = () => {
-    const { isLoginScreen } = this.state;
-    if (isLoginScreen) return <LoginFormContainer />;
-    if (isSignupScreen) return <SignupFormContainer />;
-    if (isForgotPasswordScreen) return <ForgotPasswordFormContainer />;
+    return (
+      <div className={css(styles.formContainer)}>
+        <div className={css(styles.title)}>Proposal</div>
+        <div className={css(styles.subheading)}>
+          We'll help you take a step forward.
+        </div>
+        <form className={css(styles.form)} onSubmit={this.handleSubmit}>
+          <input
+            required
+            className={css(styles.formInput)}
+            type='text'
+            name='proposal'
+            value={this.state.proposal}
+            onChange={this.handleInput('proposal')}
+            placeholder='Proposal'
+          />
+          <textarea
+            required
+            className={css(styles.formInput)}
+            type='text'
+            name='description'
+            value={this.state.descriptionn}
+            onChange={this.handleInput('description')}
+            placeholder='Description'
+          />
+          <input disabled={this.state.submitted} className={css(styles.button)} type='submit' value='SUBMIT PROPOSAL' />
+        </form>
+      </div>
+    )
   }
 
   render() {
@@ -41,12 +82,12 @@ class Home extends React.Component {
           onRequestClose={this.handleCloseModal}
           shouldFocusAfterRender={true}
           contentLabel="Login"
-          style={this.formatModalStyle()}
+          style={modalStyle}
         >
           <div className={css(styles.modal)}>
             <div>
               <span className={css(styles.button)} onClick={this.handleCloseModal}>X</span>
-              <Thread />
+              { this.renderModalContent() }
             </div>
             <div className={css(styles.modalRenderTextContainer)}>
               <div className={css(styles.modalRenderText)}>
@@ -55,6 +96,7 @@ class Home extends React.Component {
           </div>
         </ReactModal>
         <h1> Home </h1>
+        <button onClick={this.handleOpenModal}>Trigger Modal</button>
       </div>
     );
   }
@@ -86,6 +128,54 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     justifyContent: 'space-between',
     height: '100%'
+  },
+  formContainer: {
+    display: 'flex',
+    flexDirection: 'column',
+    width: '65%',
+    margin: '0 auto',
+  },
+  form: {
+    display: 'flex',
+    flexDirection: 'column',
+    margin: '0 auto',
+    justifyContent: 'space-between',
+    width: '100%',
+    boxSizing: 'border-box'
+  },
+  formInput: {
+    marginTop: '15px',
+    border: '1px solid #d9d9d9',
+    padding: '8px 12px',
+    lineHeight: '1.45',
+    ':focus': {
+      border: '1px solid #01b4c0',
+      outline: 'none !important'
+    }
+  },
+  formContainer: {
+    display: 'flex',
+    flexDirection: 'column',
+    width: '65%',
+    margin: '0 auto',
+  },
+  form: {
+    display: 'flex',
+    flexDirection: 'column',
+    margin: '0 auto',
+    justifyContent: 'space-between',
+    width: '100%',
+    boxSizing: 'border-box'
+  },
+  formInput: {
+    marginTop: '15px',
+    border: '1px solid #d9d9d9',
+    padding: '8px 12px',
+    lineHeight: '1.45',
+    ':focus': {
+      border: '1px solid #01b4c0',
+      outline: 'none !important'
+    }
   }
 })
 

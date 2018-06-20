@@ -1,4 +1,4 @@
-import { RECEIVE_MAP_STATE } from '../actions/modalActions';
+import { RECEIVE_MAP_STATE } from '../actions/modalAction';
 import merge from 'lodash/merge';
 
 const defaultState = {

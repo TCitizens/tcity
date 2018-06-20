@@ -1,14 +1,13 @@
 import { connect } from 'react-redux';
 import Home from './home';
-import { updateModalMapState, updateModalThreadState } from '../../actions/modalActions';
+import { updateModalMapState } from '../../actions/modalAction';
 
 const mapStateToProps = () => {
 };
 
 const mapDispatchToProps = (dispatch) => {
   return ({
-    updateModalMapState: (modalState) => dispatch(updateModalMapState(modalState)),
-    updateModalThreadState: (modalState) => dispatch(updateModalThreadState(modalState))
+    updateModalMapState: (modalState) => dispatch(updateModalMapState(modalState))
   })
 }
 

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Home from './home/homeContainer';  
-import { Switch, Route, withRouter } from 'react-router-dom';
-import './App.css';
+import { Switch, Route } from 'react-router-dom';
+import './app.css';
 
 class App extends Component {
   render() {
@@ -15,4 +15,4 @@ class App extends Component {
   }
 }
 
-export default withRouter(App);
+export default App;
